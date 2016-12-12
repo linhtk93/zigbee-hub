@@ -1,0 +1,1327 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V9.30.3.3983 for 8051               25/Nov/2016  14:12:39
+// Copyright 2004-2016 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data_rom
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\Source\zcl_openevse_data.c
+//    Command line       =  
+//        -f "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\Tools\CC2530DB\f8wRouter.cfg"
+//        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRUE
+//        -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8 -DMAC_CFG_RX_MAX=5
+//        -DRTR_NWK) -f "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+//        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+//        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+//        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+//        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+//        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+//        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+//        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+//        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+//        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+//        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+//        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+//        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+//        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+//        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+//        -DREJOIN_POLL_RATE=440 -DREJOIN_BACKOFF=900000 -DREJOIN_SCAN=900000)
+//        -f "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\Tools\CC2530DB\f8wZCL.cfg"
+//        "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\Source\zcl_openevse_data.c"
+//        -D SECURE=1 -D TC_LINKKEY_JOIN -D HAL_UART=TRUE -D
+//        HAL_UART_DMA_RX_MAX=64 -D HAL_PA_LNA_CC2592 -D NV_INIT -D NV_RESTORE
+//        -D MULTICAST_ENABLED=FALSE -D ZCL_READ -D ZCL_WRITE -D ZCL_REPORT -D
+//        ZCL_BASIC -D ZCL_ON_OFF -D ZCL_ELECTRICAL_MEASUREMENT -lC "C:\Texas
+//        Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\RouterEB\List"
+//        -lA "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\RouterEB\List"
+//        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\RouterEB\Obj"
+//        -e --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data_rom --nr_virtual_regs 16 -I "C:\Texas
+//        Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\" -I
+//        "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\Source\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\Source\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\ZMain\TI2530DB\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\hal\include\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\mac\include\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\mt\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\osal\include\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\stack\af\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\stack\zcl\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\zmac\"
+//        -I "C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+//        -Ohz --require_prototypes
+//    List file          =  
+//        C:\Texas Instruments\Z-Stack Home
+//        1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\CC2530DB\RouterEB\List\zcl_openevse_data.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME zcl_openevse_data
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC zclOpenEvse_Attrs
+        PUBLIC zclOpenEvse_BlAttrs
+        PUBLIC zclOpenEvse_BlInClusterList
+        PUBLIC zclOpenEvse_BlNumAttributes
+        PUBLIC zclOpenEvse_BlOutClusterList
+        PUBLIC zclOpenEvse_BlSimpleDesc
+        PUBLIC zclOpenEvse_DateCode
+        PUBLIC zclOpenEvse_DeviceEnable
+        PUBLIC zclOpenEvse_HWRevision
+        PUBLIC zclOpenEvse_IdentifyTime
+        PUBLIC zclOpenEvse_InClusterList
+        PUBLIC zclOpenEvse_LocationDescription
+        PUBLIC zclOpenEvse_ManufacturerName
+        PUBLIC zclOpenEvse_ModelId
+        PUBLIC zclOpenEvse_NumAttributes
+        PUBLIC zclOpenEvse_OnOff
+        PUBLIC zclOpenEvse_OutClusterList
+        PUBLIC zclOpenEvse_PhysicalEnvironment
+        PUBLIC zclOpenEvse_PowerSource
+        PUBLIC zclOpenEvse_SimpleDesc
+        PUBLIC zclOpenEvse_ZCLVersion
+        PUBLIC zclOpenEvse_ampsScaled
+        PUBLIC zclOpenEvse_backlight
+        PUBLIC zclOpenEvse_elecMeasDivisor
+        PUBLIC zclOpenEvse_elecMeasMultiplier
+        PUBLIC zclOpenEvse_elecMeasType
+        PUBLIC zclOpenEvse_elecMeasWattsDivisor
+        PUBLIC zclOpenEvse_elecMeasWattsMultiplier
+        PUBLIC zclOpenEvse_energyDemand
+        PUBLIC zclOpenEvse_energyLimit
+        PUBLIC zclOpenEvse_energySum
+        PUBLIC zclOpenEvse_state
+        PUBLIC zclOpenEvse_temperature
+        PUBLIC zclOpenEvse_voltsScaled
+        PUBLIC zclOpenEvse_wattsScaled
+// C:\Texas Instruments\Z-Stack Home 1.2.2a.44539\Projects\zstack\HomeAutomation\OpenEVSE\Source\zcl_openevse_data.c
+//    1 /**************************************************************************************************
+//    2   Filename:       zcl_openevse_data.c
+//    3 
+//    4   Description:    Zigbee Cluster Library - device data for OpenEVSE.
+//    5 
+//    6 
+//    7   Copyright 2006-2014 Texas Instruments Incorporated. All rights reserved.
+//    8   Copyright 2015 Ryan Press
+//    9 
+//   10   IMPORTANT: Your use of this Software is limited to those specific rights
+//   11   granted under the terms of a software license agreement between the user
+//   12   who downloaded the software, his/her employer (which must be your employer)
+//   13   and Texas Instruments Incorporated (the "License").  You may not use this
+//   14   Software unless you agree to abide by the terms of the License. The License
+//   15   limits your use, and you acknowledge, that the Software may not be modified,
+//   16   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   17   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   18   frequency transceiver, which is integrated into your product.  Other than for
+//   19   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   20   works of, modify, distribute, perform, display or sell this Software and/or
+//   21   its documentation for any purpose.
+//   22 
+//   23   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   24   PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   25   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   26   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   27   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   28   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   29   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   30   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   31   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   32   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   33   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   34 
+//   35   Should you have any questions regarding your right to use this Software,
+//   36   contact Texas Instruments Incorporated at www.TI.com.
+//   37 **************************************************************************************************/
+//   38 
+//   39 /*********************************************************************
+//   40  * INCLUDES
+//   41  */
+//   42 #include "ZComDef.h"
+//   43 #include "OSAL.h"
+//   44 #include "AF.h"
+//   45 #include "ZDConfig.h"
+//   46 
+//   47 #include "zcl.h"
+//   48 #include "zcl_general.h"
+//   49 #include "zcl_ha.h"
+//   50 #include "zcl_ezmode.h"
+//   51 #include "zcl_poll_control.h"
+//   52 #include "zcl_electrical_measurement.h"
+//   53 #include "zcl_meter_identification.h"
+//   54 #include "zcl_appliance_identification.h"
+//   55 #include "zcl_appliance_events_alerts.h"
+//   56 #include "zcl_power_profile.h"
+//   57 #include "zcl_appliance_control.h"
+//   58 #include "zcl_appliance_statistics.h"
+//   59 #include "zcl_hvac.h"
+//   60 
+//   61 #include "zcl_openevse.h"
+//   62 
+//   63 /*********************************************************************
+//   64  * CONSTANTS
+//   65  */
+//   66 
+//   67 #define OPENEVSE_DEVICE_VERSION     0
+//   68 #define OPENEVSE_FLAGS              0
+//   69 
+//   70 #define OPENEVSE_HWVERSION          1
+//   71 #define OPENEVSE_ZCLVERSION         1
+//   72 
+//   73 /*********************************************************************
+//   74  * TYPEDEFS
+//   75  */
+//   76 
+//   77 /*********************************************************************
+//   78  * MACROS
+//   79  */
+//   80 
+//   81 /*********************************************************************
+//   82  * GLOBAL VARIABLES
+//   83  */
+//   84 
+//   85 // Basic Cluster
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   86 const uint8 zclOpenEvse_HWRevision = OPENEVSE_HWVERSION;
+zclOpenEvse_HWRevision:
+        DB 1
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   87 const uint8 zclOpenEvse_ZCLVersion = OPENEVSE_ZCLVERSION;
+zclOpenEvse_ZCLVersion:
+        DB 1
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   88 const uint8 zclOpenEvse_ManufacturerName[] = { 8, 'P','r','e','s','s','l','a','b' };
+zclOpenEvse_ManufacturerName:
+        DB 8
+        DB 80
+        DB 114
+        DB 101
+        DB 115
+        DB 115
+        DB 108
+        DB 97
+        DB 98
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   89 const uint8 zclOpenEvse_ModelId[] = { 16, 'P','L','-','E','V','S','E','1',' ',' ',' ',' ',' ',' ',' ',' ' };
+zclOpenEvse_ModelId:
+        DB 16
+        DB 80
+        DB 76
+        DB 45
+        DB 69
+        DB 86
+        DB 83
+        DB 69
+        DB 49
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   90 const uint8 zclOpenEvse_DateCode[] = { 16, '2','0','1','5','1','2','2','3',' ',' ',' ',' ',' ',' ',' ',' ' };
+zclOpenEvse_DateCode:
+        DB 16
+        DB 50
+        DB 48
+        DB 49
+        DB 53
+        DB 49
+        DB 50
+        DB 50
+        DB 51
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//   91 const uint8 zclOpenEvse_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+zclOpenEvse_PowerSource:
+        DB 1
+//   92 
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   93 uint8 zclOpenEvse_LocationDescription[17] = { 16, ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ' };
+zclOpenEvse_LocationDescription:
+        DATA8
+        DS 17
+        REQUIRE `?<Initializer for zclOpenEvse_LocationDescript`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   94 uint8 zclOpenEvse_PhysicalEnvironment = 0;
+zclOpenEvse_PhysicalEnvironment:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   95 uint8 zclOpenEvse_DeviceEnable = DEVICE_ENABLED;
+zclOpenEvse_DeviceEnable:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for zclOpenEvse_DeviceEnable>`
+        REQUIRE __INIT_XDATA_I
+//   96 
+//   97 // On/Off Cluster
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   98 uint8 zclOpenEvse_OnOff = LIGHT_OFF;
+zclOpenEvse_OnOff:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//   99 uint8 zclOpenEvse_backlight = LIGHT_ON;
+zclOpenEvse_backlight:
+        DATA8
+        DS 1
+        REQUIRE `?<Initializer for zclOpenEvse_backlight>`
+        REQUIRE __INIT_XDATA_I
+//  100 
+//  101 // Device Temperature Configuration attributes
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  102 int16 zclOpenEvse_temperature = 20;
+zclOpenEvse_temperature:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for zclOpenEvse_temperature>`
+        REQUIRE __INIT_XDATA_I
+//  103 
+//  104 // Identify attributes
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//  105 uint16 zclOpenEvse_IdentifyTime = 0;
+zclOpenEvse_IdentifyTime:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//  106 
+//  107 // Multistate attributes
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//  108 uint16 zclOpenEvse_state = 0;
+zclOpenEvse_state:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//  109 
+//  110 // Metering attributes
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//  111 uint8 zclOpenEvse_energySum[6] = {0};
+zclOpenEvse_energySum:
+        DS 6
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA32
+//  112 uint32 zclOpenEvse_energyDemand = 0;
+zclOpenEvse_energyDemand:
+        DS 4
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  113 uint32 zclOpenEvse_energyLimit = 0xFFFFFF;
+zclOpenEvse_energyLimit:
+        DATA32
+        DS 4
+        REQUIRE `?<Initializer for zclOpenEvse_energyLimit>`
+        REQUIRE __INIT_XDATA_I
+//  114 
+//  115 // Electrical Measurement attributes
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA32
+//  116 uint32 zclOpenEvse_elecMeasType = 0;
+zclOpenEvse_elecMeasType:
+        DS 4
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//  117 uint16 zclOpenEvse_voltsScaled = 0;
+zclOpenEvse_voltsScaled:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//  118 uint16 zclOpenEvse_ampsScaled = 0;
+zclOpenEvse_ampsScaled:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//  119 int16 zclOpenEvse_wattsScaled = 0;
+zclOpenEvse_wattsScaled:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  120 uint16 zclOpenEvse_elecMeasMultiplier = 10;
+zclOpenEvse_elecMeasMultiplier:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for zclOpenEvse_elecMeasMultipli`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  121 uint16 zclOpenEvse_elecMeasDivisor = 1;
+zclOpenEvse_elecMeasDivisor:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for zclOpenEvse_elecMeasDivisor>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  122 uint16 zclOpenEvse_elecMeasWattsMultiplier = 1;
+zclOpenEvse_elecMeasWattsMultiplier:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for zclOpenEvse_elecMeasWattsMul`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  123 uint16 zclOpenEvse_elecMeasWattsDivisor = 10;
+zclOpenEvse_elecMeasWattsDivisor:
+        DATA16
+        DS 2
+        REQUIRE `?<Initializer for zclOpenEvse_elecMeasWattsDiv`
+        REQUIRE __INIT_XDATA_I
+//  124 
+//  125 /*********************************************************************
+//  126  * ATTRIBUTE DEFINITIONS - Uses REAL cluster IDs
+//  127  */
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+        DATA8
+//  128 CONST zclAttrRec_t zclOpenEvse_Attrs[] =
+zclOpenEvse_Attrs:
+        DATA16
+        DW 0
+        DW 3
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zclOpenEvse_HWRevision
+        DW 0
+        DW 0
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zclOpenEvse_ZCLVersion
+        DW 0
+        DW 4
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zclOpenEvse_ManufacturerName
+        DW 0
+        DW 5
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zclOpenEvse_ModelId
+        DW 0
+        DW 6
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zclOpenEvse_DateCode
+        DW 0
+        DW 7
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zclOpenEvse_PowerSource
+        DW 0
+        DW 16
+        DATA8
+        DB 66
+        DB 3
+        DATA16
+        DW zclOpenEvse_LocationDescription
+        DW 0
+        DW 17
+        DATA8
+        DB 32
+        DB 3
+        DATA16
+        DW zclOpenEvse_PhysicalEnvironment
+        DW 0
+        DW 18
+        DATA8
+        DB 16
+        DB 3
+        DATA16
+        DW zclOpenEvse_DeviceEnable
+        DW 2
+        DW 0
+        DATA8
+        DB 41
+        DB 1
+        DATA16
+        DW zclOpenEvse_temperature
+        DW 6
+        DW 0
+        DATA8
+        DB 16
+        DB 1
+        DATA16
+        DW zclOpenEvse_OnOff
+        DW 18
+        DW 85
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_state
+        DW 1794
+        DW 0
+        DATA8
+        DB 37
+        DB 3
+        DATA16
+        DW zclOpenEvse_energySum
+        DW 1794
+        DW 1536
+        DATA8
+        DB 34
+        DB 1
+        DATA16
+        DW zclOpenEvse_energyDemand
+        DW 1794
+        DW 1537
+        DATA8
+        DB 34
+        DB 3
+        DATA16
+        DW zclOpenEvse_energyLimit
+        DW 2820
+        DW 0
+        DATA8
+        DB 27
+        DB 1
+        DATA16
+        DW zclOpenEvse_elecMeasType
+        DW 2820
+        DW 1285
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_voltsScaled
+        DW 2820
+        DW 1288
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_ampsScaled
+        DW 2820
+        DW 1291
+        DATA8
+        DB 41
+        DB 1
+        DATA16
+        DW zclOpenEvse_wattsScaled
+        DW 2820
+        DW 1536
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_elecMeasMultiplier
+        DW 2820
+        DW 1537
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_elecMeasDivisor
+        DW 2820
+        DW 1538
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_elecMeasMultiplier
+        DW 2820
+        DW 1539
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_elecMeasDivisor
+        DW 2820
+        DW 1540
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_elecMeasWattsMultiplier
+        DW 2820
+        DW 1541
+        DATA8
+        DB 33
+        DB 1
+        DATA16
+        DW zclOpenEvse_elecMeasWattsDivisor
+//  129 {
+//  130   // *** General Basic Cluster Attributes ***
+//  131   {
+//  132     ZCL_CLUSTER_ID_GEN_BASIC,             // Cluster IDs - defined in the foundation (ie. zcl.h)
+//  133     {  // Attribute record
+//  134       ATTRID_BASIC_HW_VERSION,            // Attribute ID - Found in Cluster Library header (ie. zcl_general.h)
+//  135       ZCL_DATATYPE_UINT8,                 // Data Type - found in zcl.h
+//  136       ACCESS_CONTROL_READ,                // Variable access control - found in zcl.h
+//  137       (void *)&zclOpenEvse_HWRevision  // Pointer to attribute variable
+//  138     }
+//  139   },
+//  140   {
+//  141     ZCL_CLUSTER_ID_GEN_BASIC,
+//  142     { // Attribute record
+//  143       ATTRID_BASIC_ZCL_VERSION,
+//  144       ZCL_DATATYPE_UINT8,
+//  145       ACCESS_CONTROL_READ,
+//  146       (void *)&zclOpenEvse_ZCLVersion
+//  147     }
+//  148   },
+//  149   {
+//  150     ZCL_CLUSTER_ID_GEN_BASIC,
+//  151     { // Attribute record
+//  152       ATTRID_BASIC_MANUFACTURER_NAME,
+//  153       ZCL_DATATYPE_CHAR_STR,
+//  154       ACCESS_CONTROL_READ,
+//  155       (void *)zclOpenEvse_ManufacturerName
+//  156     }
+//  157   },
+//  158   {
+//  159     ZCL_CLUSTER_ID_GEN_BASIC,
+//  160     { // Attribute record
+//  161       ATTRID_BASIC_MODEL_ID,
+//  162       ZCL_DATATYPE_CHAR_STR,
+//  163       ACCESS_CONTROL_READ,
+//  164       (void *)zclOpenEvse_ModelId
+//  165     }
+//  166   },
+//  167   {
+//  168     ZCL_CLUSTER_ID_GEN_BASIC,
+//  169     { // Attribute record
+//  170       ATTRID_BASIC_DATE_CODE,
+//  171       ZCL_DATATYPE_CHAR_STR,
+//  172       ACCESS_CONTROL_READ,
+//  173       (void *)zclOpenEvse_DateCode
+//  174     }
+//  175   },
+//  176   {
+//  177     ZCL_CLUSTER_ID_GEN_BASIC,
+//  178     { // Attribute record
+//  179       ATTRID_BASIC_POWER_SOURCE,
+//  180       ZCL_DATATYPE_UINT8,
+//  181       ACCESS_CONTROL_READ,
+//  182       (void *)&zclOpenEvse_PowerSource
+//  183     }
+//  184   },
+//  185   {
+//  186     ZCL_CLUSTER_ID_GEN_BASIC,
+//  187     { // Attribute record
+//  188       ATTRID_BASIC_LOCATION_DESC,
+//  189       ZCL_DATATYPE_CHAR_STR,
+//  190       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+//  191       (void *)zclOpenEvse_LocationDescription
+//  192     }
+//  193   },
+//  194   {
+//  195     ZCL_CLUSTER_ID_GEN_BASIC,
+//  196     { // Attribute record
+//  197       ATTRID_BASIC_PHYSICAL_ENV,
+//  198       ZCL_DATATYPE_UINT8,
+//  199       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+//  200       (void *)&zclOpenEvse_PhysicalEnvironment
+//  201     }
+//  202   },
+//  203   {
+//  204     ZCL_CLUSTER_ID_GEN_BASIC,
+//  205     { // Attribute record
+//  206       ATTRID_BASIC_DEVICE_ENABLED,
+//  207       ZCL_DATATYPE_BOOLEAN,
+//  208       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+//  209       (void *)&zclOpenEvse_DeviceEnable
+//  210     }
+//  211   },
+//  212 
+//  213   // *** Device Temperature Configuration Cluster Attributes ***
+//  214   {
+//  215     ZCL_CLUSTER_ID_GEN_DEVICE_TEMP_CONFIG,
+//  216     { // Attribute record
+//  217       ATTRID_DEV_TEMP_CURRENT,
+//  218       ZCL_DATATYPE_INT16,
+//  219       ACCESS_CONTROL_READ,
+//  220       (void *)&zclOpenEvse_temperature
+//  221     }
+//  222   },
+//  223 
+//  224   // *** On/Off Cluster Attributes ***
+//  225   {
+//  226     ZCL_CLUSTER_ID_GEN_ON_OFF,
+//  227     { // Attribute record
+//  228       ATTRID_ON_OFF,
+//  229       ZCL_DATATYPE_BOOLEAN,
+//  230       ACCESS_CONTROL_READ,
+//  231       (void *)&zclOpenEvse_OnOff
+//  232     }
+//  233   },
+//  234 
+//  235   // *** Multistate Cluster Attributes ***
+//  236   {
+//  237     ZCL_CLUSTER_ID_GEN_MULTISTATE_INPUT_BASIC,
+//  238     { // Attribute record
+//  239       ATTRID_IOV_BASIC_PRESENT_VALUE,
+//  240       ZCL_DATATYPE_UINT16,
+//  241       ACCESS_CONTROL_READ,
+//  242       (void *)&zclOpenEvse_state
+//  243     }
+//  244   },
+//  245 
+//  246   // *** Metering Cluster Attributes ***
+//  247   {
+//  248     ZCL_CLUSTER_ID_SE_METERING,
+//  249     { // Attribute record
+//  250       ATTRID_CURRENT_SUM_DELIVERED,
+//  251       ZCL_DATATYPE_UINT48,
+//  252       ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE,
+//  253       (void *)&zclOpenEvse_energySum
+//  254     }
+//  255   },
+//  256   {
+//  257     ZCL_CLUSTER_ID_SE_METERING,
+//  258     { // Attribute record
+//  259       ATTRID_CURRENT_DEMAND_DELIVERED,
+//  260       ZCL_DATATYPE_UINT24,
+//  261       ACCESS_CONTROL_READ,
+//  262       (void *)&zclOpenEvse_energyDemand
+//  263     }
+//  264   },
+//  265   {
+//  266     ZCL_CLUSTER_ID_SE_METERING,
+//  267     { // Attribute record
+//  268       ATTRID_CURRENT_DEMAND_LIMIT,
+//  269       ZCL_DATATYPE_UINT24,
+//  270       ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE,
+//  271       (void *)&zclOpenEvse_energyLimit
+//  272     }
+//  273   },
+//  274 
+//  275   // *** Electrical Measurement Cluster Attributes ***
+//  276   {
+//  277     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  278     { // Attribute record
+//  279       ATTRID_ELECTRICAL_MEASUREMENT_MEASUREMENT_TYPE,
+//  280       ZCL_DATATYPE_BITMAP32,
+//  281       ACCESS_CONTROL_READ,
+//  282       (void *)&zclOpenEvse_elecMeasType
+//  283     }
+//  284   },
+//  285   {
+//  286     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  287     { // Attribute record
+//  288       ATTRID_ELECTRICAL_MEASUREMENT_RMS_VOLTAGE,
+//  289       ZCL_DATATYPE_UINT16,
+//  290       ACCESS_CONTROL_READ,
+//  291       (void *)&zclOpenEvse_voltsScaled
+//  292     }
+//  293   },
+//  294   {
+//  295     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  296     { // Attribute record
+//  297       ATTRID_ELECTRICAL_MEASUREMENT_RMS_CURRENT,
+//  298       ZCL_DATATYPE_UINT16,
+//  299       ACCESS_CONTROL_READ,
+//  300       (void *)&zclOpenEvse_ampsScaled
+//  301     }
+//  302   },
+//  303   {
+//  304     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  305     { // Attribute record
+//  306       ATTRID_ELECTRICAL_MEASUREMENT_ACTIVE_POWER,
+//  307       ZCL_DATATYPE_INT16,
+//  308       ACCESS_CONTROL_READ,
+//  309       (void *)&zclOpenEvse_wattsScaled
+//  310     }
+//  311   },
+//  312   {
+//  313     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  314     { // Attribute record
+//  315       ATTRID_ELECTRICAL_MEASUREMENT_AC_VOLTAGE_MULTIPLIER,
+//  316       ZCL_DATATYPE_UINT16,
+//  317       ACCESS_CONTROL_READ,
+//  318       (void *)&zclOpenEvse_elecMeasMultiplier
+//  319     }
+//  320   },
+//  321   {
+//  322     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  323     { // Attribute record
+//  324       ATTRID_ELECTRICAL_MEASUREMENT_AC_VOLTAGE_DIVISOR,
+//  325       ZCL_DATATYPE_UINT16,
+//  326       ACCESS_CONTROL_READ,
+//  327       (void *)&zclOpenEvse_elecMeasDivisor
+//  328     }
+//  329   },
+//  330   {
+//  331     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  332     { // Attribute record
+//  333       ATTRID_ELECTRICAL_MEASUREMENT_AC_CURRENT_MULTIPLIER,
+//  334       ZCL_DATATYPE_UINT16,
+//  335       ACCESS_CONTROL_READ,
+//  336       (void *)&zclOpenEvse_elecMeasMultiplier
+//  337     }
+//  338   },
+//  339   {
+//  340     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  341     { // Attribute record
+//  342       ATTRID_ELECTRICAL_MEASUREMENT_AC_CURRENT_DIVISOR,
+//  343       ZCL_DATATYPE_UINT16,
+//  344       ACCESS_CONTROL_READ,
+//  345       (void *)&zclOpenEvse_elecMeasDivisor
+//  346     }
+//  347   },
+//  348   {
+//  349     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  350     { // Attribute record
+//  351       ATTRID_ELECTRICAL_MEASUREMENT_AC_POWER_MULTIPLIER,
+//  352       ZCL_DATATYPE_UINT16,
+//  353       ACCESS_CONTROL_READ,
+//  354       (void *)&zclOpenEvse_elecMeasWattsMultiplier
+//  355     }
+//  356   },
+//  357   {
+//  358     ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT,
+//  359     { // Attribute record
+//  360       ATTRID_ELECTRICAL_MEASUREMENT_AC_POWER_DIVISOR,
+//  361       ZCL_DATATYPE_UINT16,
+//  362       ACCESS_CONTROL_READ,
+//  363       (void *)&zclOpenEvse_elecMeasWattsDivisor
+//  364     }
+//  365   }
+//  366 };
+//  367 
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+        DATA8
+//  368 uint8 CONST zclOpenEvse_NumAttributes = ( sizeof(zclOpenEvse_Attrs) / sizeof(zclOpenEvse_Attrs[0]) );
+zclOpenEvse_NumAttributes:
+        DB 25
+//  369 
+//  370 /*********************************************************************
+//  371  * SIMPLE DESCRIPTOR
+//  372  */
+//  373 // This is the Cluster ID List and should be filled with Application
+//  374 // specific cluster IDs.
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA8
+//  375 const cId_t zclOpenEvse_InClusterList[] =
+zclOpenEvse_InClusterList:
+        DATA16
+        DW 0
+        DW 2
+        DW 6
+        DW 18
+        DW 1794
+        DW 2820
+//  376 {
+//  377   ZCL_CLUSTER_ID_GEN_BASIC,
+//  378   ZCL_CLUSTER_ID_GEN_DEVICE_TEMP_CONFIG,
+//  379   ZCL_CLUSTER_ID_GEN_ON_OFF,
+//  380   ZCL_CLUSTER_ID_GEN_MULTISTATE_INPUT_BASIC,
+//  381   ZCL_CLUSTER_ID_SE_METERING,
+//  382   ZCL_CLUSTER_ID_HA_ELECTRICAL_MEASUREMENT
+//  383 };
+//  384 #define zclOpenEvse_MAX_INCLUSTERS   6
+//  385 
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  386 const cId_t zclOpenEvse_OutClusterList[] =
+zclOpenEvse_OutClusterList:
+        DW 0
+//  387 {
+//  388   ZCL_CLUSTER_ID_GEN_BASIC
+//  389 };
+//  390 #define zclOpenEvse_MAX_OUTCLUSTERS  (sizeof(zclOpenEvse_OutClusterList) / sizeof(zclOpenEvse_OutClusterList[0]))
+//  391 
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  392 SimpleDescriptionFormat_t zclOpenEvse_SimpleDesc =
+zclOpenEvse_SimpleDesc:
+        DATA8
+        DS 12
+        REQUIRE `?<Initializer for zclOpenEvse_SimpleDesc>`
+        REQUIRE __INIT_XDATA_I
+//  393 {
+//  394   OPENEVSE_ENDPOINT,                  //  int Endpoint;
+//  395   ZCL_HA_PROFILE_ID,                  //  uint16 AppProfId;
+//  396   ZCL_HA_DEVICEID_SMART_PLUG,         //  uint16 AppDeviceId;
+//  397   OPENEVSE_DEVICE_VERSION,            //  int   AppDevVer:4;
+//  398   OPENEVSE_FLAGS,                     //  int   AppFlags:4;
+//  399   zclOpenEvse_MAX_INCLUSTERS,         //  byte  AppNumInClusters;
+//  400   (cId_t *)zclOpenEvse_InClusterList, //  byte *pAppInClusterList;
+//  401   zclOpenEvse_MAX_OUTCLUSTERS,        //  byte  AppNumInClusters;
+//  402   (cId_t *)zclOpenEvse_OutClusterList //  byte *pAppInClusterList;
+//  403 };
+//  404 
+//  405 
+//  406 /*********************************************************************
+//  407  * ATTRIBUTE DEFINITIONS - Uses REAL cluster IDs
+//  408  */
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+        DATA8
+//  409 CONST zclAttrRec_t zclOpenEvse_BlAttrs[] =
+zclOpenEvse_BlAttrs:
+        DATA16
+        DW 0
+        DW 3
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zclOpenEvse_HWRevision
+        DW 0
+        DW 0
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zclOpenEvse_ZCLVersion
+        DW 0
+        DW 4
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zclOpenEvse_ManufacturerName
+        DW 0
+        DW 5
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zclOpenEvse_ModelId
+        DW 0
+        DW 6
+        DATA8
+        DB 66
+        DB 1
+        DATA16
+        DW zclOpenEvse_DateCode
+        DW 0
+        DW 7
+        DATA8
+        DB 32
+        DB 1
+        DATA16
+        DW zclOpenEvse_PowerSource
+        DW 0
+        DW 16
+        DATA8
+        DB 66
+        DB 3
+        DATA16
+        DW zclOpenEvse_LocationDescription
+        DW 0
+        DW 17
+        DATA8
+        DB 32
+        DB 3
+        DATA16
+        DW zclOpenEvse_PhysicalEnvironment
+        DW 0
+        DW 18
+        DATA8
+        DB 16
+        DB 3
+        DATA16
+        DW zclOpenEvse_DeviceEnable
+        DW 6
+        DW 0
+        DATA8
+        DB 16
+        DB 1
+        DATA16
+        DW zclOpenEvse_backlight
+//  410 {
+//  411   // *** General Basic Cluster Attributes ***
+//  412   {
+//  413     ZCL_CLUSTER_ID_GEN_BASIC,             // Cluster IDs - defined in the foundation (ie. zcl.h)
+//  414     {  // Attribute record
+//  415       ATTRID_BASIC_HW_VERSION,            // Attribute ID - Found in Cluster Library header (ie. zcl_general.h)
+//  416       ZCL_DATATYPE_UINT8,                 // Data Type - found in zcl.h
+//  417       ACCESS_CONTROL_READ,                // Variable access control - found in zcl.h
+//  418       (void *)&zclOpenEvse_HWRevision     // Pointer to attribute variable
+//  419     }
+//  420   },
+//  421   {
+//  422     ZCL_CLUSTER_ID_GEN_BASIC,
+//  423     { // Attribute record
+//  424       ATTRID_BASIC_ZCL_VERSION,
+//  425       ZCL_DATATYPE_UINT8,
+//  426       ACCESS_CONTROL_READ,
+//  427       (void *)&zclOpenEvse_ZCLVersion
+//  428     }
+//  429   },
+//  430   {
+//  431     ZCL_CLUSTER_ID_GEN_BASIC,
+//  432     { // Attribute record
+//  433       ATTRID_BASIC_MANUFACTURER_NAME,
+//  434       ZCL_DATATYPE_CHAR_STR,
+//  435       ACCESS_CONTROL_READ,
+//  436       (void *)zclOpenEvse_ManufacturerName
+//  437     }
+//  438   },
+//  439   {
+//  440     ZCL_CLUSTER_ID_GEN_BASIC,
+//  441     { // Attribute record
+//  442       ATTRID_BASIC_MODEL_ID,
+//  443       ZCL_DATATYPE_CHAR_STR,
+//  444       ACCESS_CONTROL_READ,
+//  445       (void *)zclOpenEvse_ModelId
+//  446     }
+//  447   },
+//  448   {
+//  449     ZCL_CLUSTER_ID_GEN_BASIC,
+//  450     { // Attribute record
+//  451       ATTRID_BASIC_DATE_CODE,
+//  452       ZCL_DATATYPE_CHAR_STR,
+//  453       ACCESS_CONTROL_READ,
+//  454       (void *)zclOpenEvse_DateCode
+//  455     }
+//  456   },
+//  457   {
+//  458     ZCL_CLUSTER_ID_GEN_BASIC,
+//  459     { // Attribute record
+//  460       ATTRID_BASIC_POWER_SOURCE,
+//  461       ZCL_DATATYPE_UINT8,
+//  462       ACCESS_CONTROL_READ,
+//  463       (void *)&zclOpenEvse_PowerSource
+//  464     }
+//  465   },
+//  466   {
+//  467     ZCL_CLUSTER_ID_GEN_BASIC,
+//  468     { // Attribute record
+//  469       ATTRID_BASIC_LOCATION_DESC,
+//  470       ZCL_DATATYPE_CHAR_STR,
+//  471       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+//  472       (void *)zclOpenEvse_LocationDescription
+//  473     }
+//  474   },
+//  475   {
+//  476     ZCL_CLUSTER_ID_GEN_BASIC,
+//  477     { // Attribute record
+//  478       ATTRID_BASIC_PHYSICAL_ENV,
+//  479       ZCL_DATATYPE_UINT8,
+//  480       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+//  481       (void *)&zclOpenEvse_PhysicalEnvironment
+//  482     }
+//  483   },
+//  484   {
+//  485     ZCL_CLUSTER_ID_GEN_BASIC,
+//  486     { // Attribute record
+//  487       ATTRID_BASIC_DEVICE_ENABLED,
+//  488       ZCL_DATATYPE_BOOLEAN,
+//  489       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+//  490       (void *)&zclOpenEvse_DeviceEnable
+//  491     }
+//  492   },
+//  493 
+//  494   // *** On/Off Cluster Attributes ***
+//  495   {
+//  496     ZCL_CLUSTER_ID_GEN_ON_OFF,
+//  497     { // Attribute record
+//  498       ATTRID_ON_OFF,
+//  499       ZCL_DATATYPE_BOOLEAN,
+//  500       ACCESS_CONTROL_READ,
+//  501       (void *)&zclOpenEvse_backlight
+//  502     }
+//  503   },
+//  504 };
+//  505 
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+        DATA8
+//  506 uint8 CONST zclOpenEvse_BlNumAttributes = ( sizeof(zclOpenEvse_BlAttrs) / sizeof(zclOpenEvse_BlAttrs[0]) );
+zclOpenEvse_BlNumAttributes:
+        DB 10
+//  507 
+//  508 /*********************************************************************
+//  509  * SIMPLE DESCRIPTOR
+//  510  */
+//  511 // This is the Cluster ID List and should be filled with Application
+//  512 // specific cluster IDs.
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+//  513 const cId_t zclOpenEvse_BlInClusterList[] =
+zclOpenEvse_BlInClusterList:
+        DATA16
+        DW 0
+        DW 6
+//  514 {
+//  515   ZCL_CLUSTER_ID_GEN_BASIC,
+//  516   ZCL_CLUSTER_ID_GEN_ON_OFF,
+//  517 };
+//  518 #define zclOpenEvse_BL_MAX_INCLUSTERS   2
+//  519 
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  520 const cId_t zclOpenEvse_BlOutClusterList[] =
+zclOpenEvse_BlOutClusterList:
+        DW 0
+//  521 {
+//  522   ZCL_CLUSTER_ID_GEN_BASIC
+//  523 };
+//  524 #define zclOpenEvse_BL_MAX_OUTCLUSTERS  (sizeof(zclOpenEvse_BlOutClusterList) / sizeof(zclOpenEvse_BlOutClusterList[0]))
+//  525 
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  526 SimpleDescriptionFormat_t zclOpenEvse_BlSimpleDesc =
+zclOpenEvse_BlSimpleDesc:
+        DATA8
+        DS 12
+        REQUIRE `?<Initializer for zclOpenEvse_BlSimpleDesc>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_LocationDescript`:
+        DATA8
+        DB 16
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+        DB 32
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_DeviceEnable>`:
+        DATA8
+        DB 1
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_backlight>`:
+        DATA8
+        DB 1
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_temperature>`:
+        DATA16
+        DW 20
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_energyLimit>`:
+        DATA32
+        DD 16777215
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_elecMeasMultipli`:
+        DATA16
+        DW 10
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_elecMeasDivisor>`:
+        DATA16
+        DW 1
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_elecMeasWattsMul`:
+        DATA16
+        DW 1
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_elecMeasWattsDiv`:
+        DATA16
+        DW 10
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_SimpleDesc>`:
+        DATA8
+        DB 8
+        DATA16
+        DW 260
+        DW 81
+        DATA8
+        DB 0
+        DB 6
+        DATA16
+        DW zclOpenEvse_InClusterList
+        DATA8
+        DB 1
+        DATA16
+        DW zclOpenEvse_OutClusterList
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for zclOpenEvse_BlSimpleDesc>`:
+        DATA8
+        DB 9
+        DATA16
+        DW 260
+        DW 2
+        DATA8
+        DB 0
+        DB 2
+        DATA16
+        DW zclOpenEvse_BlInClusterList
+        DATA8
+        DB 1
+        DATA16
+        DW zclOpenEvse_BlOutClusterList
+
+        END
+//  527 {
+//  528   OPENEVSE_ENDPOINT+1,                //  int Endpoint;
+//  529   ZCL_HA_PROFILE_ID,                  //  uint16 AppProfId;
+//  530   ZCL_HA_DEVICEID_ON_OFF_OUTPUT,      //  uint16 AppDeviceId;
+//  531   OPENEVSE_DEVICE_VERSION,            //  int   AppDevVer:4;
+//  532   OPENEVSE_FLAGS,                     //  int   AppFlags:4;
+//  533   zclOpenEvse_BL_MAX_INCLUSTERS,      //  byte  AppNumInClusters;
+//  534   (cId_t *)zclOpenEvse_BlInClusterList, //  byte *pAppInClusterList;
+//  535   zclOpenEvse_BL_MAX_OUTCLUSTERS,       //  byte  AppNumInClusters;
+//  536   (cId_t *)zclOpenEvse_BlOutClusterList //  byte *pAppInClusterList;
+//  537 };
+//  538 
+//  539 
+//  540 /*********************************************************************
+//  541  * GLOBAL FUNCTIONS
+//  542  */
+//  543 
+//  544 /*********************************************************************
+//  545  * LOCAL FUNCTIONS
+//  546  */
+//  547 
+//  548 /****************************************************************************
+//  549 ****************************************************************************/
+//  550 
+//  551 
+// 
+// 282 bytes in segment CODE_C
+//  57 bytes in segment XDATA_I
+//  57 bytes in segment XDATA_ID
+//  66 bytes in segment XDATA_ROM_C
+//  26 bytes in segment XDATA_Z
+// 
+// 339 bytes of CODE  memory
+//  66 bytes of CONST memory
+//  83 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none
