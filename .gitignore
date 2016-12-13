@@ -1,3 +1,15 @@
 *.pbi
 *.cout
 *.r51
+*.a51
+*.hex
+*.lst
+*.s51
+*.map
+*.pbd
+*.browse
+*.dep
+*.ewp
+*.dni
+*.wsdt
+*.wspos

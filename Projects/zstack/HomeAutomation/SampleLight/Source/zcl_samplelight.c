@@ -934,11 +934,13 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
   if ( cmd == COMMAND_ON )
   {
     zclSampleLight_OnOff = LIGHT_ON;
+    HalLedSet ( HAL_LED_1, HAL_LED_MODE_ON ); //turn on led1
   }
   // Turn off the light
   else if ( cmd == COMMAND_OFF )
   {
     zclSampleLight_OnOff = LIGHT_OFF;
+    HalLedSet ( HAL_LED_1, HAL_LED_MODE_ON ); //turn off led1
   }
   // Toggle the light
   else if ( cmd == COMMAND_TOGGLE )
@@ -956,9 +958,22 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
 #if ZCL_LEVEL_CTRL
   zclSampleLight_DefaultMove( );
 #endif
-
+  
+//  //upate 9/12/2016
+//  zclReportCmd_t rptcmd; 
+//  rptcmd.numAttr = 1;
+//  rptcmd.attrList[0].attrID = ATTRID_ON_OFF;
+//  rptcmd.attrList[0].dataType = ZCL_DATATYPE_BOOLEAN;
+//  rptcmd.attrList[0].attrData = (uint8*)&zclSampleLight_OnOff;
+//
+//  // Set destination address to indirect
+//  zclSampleLight_DstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+//  zclSampleLight_DstAddr.addr.shortAddr = 0;
+//  zcl_SendReportCmd(SAMPLELIGHT_ENDPOINT,&zclSampleLight_DstAddr, ZCL_CLUSTER_ID_GEN_ON_OFF, &rptcmd, ZCL_FRAME_SERVER_CLIENT_DIR, false, 0 );
+//  //end update
+  
   // update the display
-  zclSampleLight_LcdDisplayUpdate( );
+  //zclSampleLight_LcdDisplayUpdate( );
 }
 
 #ifdef ZCL_LEVEL_CTRL
