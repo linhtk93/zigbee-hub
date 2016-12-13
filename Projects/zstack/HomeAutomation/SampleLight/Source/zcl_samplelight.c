@@ -940,7 +940,7 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
   else if ( cmd == COMMAND_OFF )
   {
     zclSampleLight_OnOff = LIGHT_OFF;
-    HalLedSet ( HAL_LED_1, HAL_LED_MODE_ON ); //turn off led1
+    HalLedSet ( HAL_LED_1, HAL_LED_MODE_OFF ); //turn off led1
   }
   // Toggle the light
   else if ( cmd == COMMAND_TOGGLE )
