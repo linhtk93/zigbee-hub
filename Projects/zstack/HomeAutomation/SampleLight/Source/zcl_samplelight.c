@@ -545,6 +545,7 @@ uint16 zclSampleLight_event_loop( uint8 task_id, uint16 events )
  */
 static void zclSampleLight_HandleKeys( byte shift, byte keys )
 {
+  /*
   if ( keys & HAL_KEY_SW_1 )
   {
     giLightScreenMode = LIGHT_MAINMODE;
@@ -646,9 +647,36 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
   {
     giLightScreenMode = giLightScreenMode ? LIGHT_MAINMODE : LIGHT_HELPMODE;
   }
-
+  
   // update the display, including the light
   zclSampleLight_LcdDisplayUpdate();
+  */
+  
+  if ( keys & HAL_KEY_SW_6 )
+  {
+    // toggle local light immediately
+    zclSampleLight_OnOff = zclSampleLight_OnOff ? LIGHT_OFF : LIGHT_ON;
+    if(zclSampleLight_OnOff==LIGHT_ON)
+    {
+      HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+    }
+    else 
+    {
+      HalLedSet(HAL_LED_1, HAL_LED_MODE_ON );  //turn off led1
+    }
+    
+    zclReportCmd_t rptcmd; 
+    rptcmd.numAttr = 1;
+    rptcmd.attrList[0].attrID = ATTRID_ON_OFF;
+    rptcmd.attrList[0].dataType = ZCL_DATATYPE_BOOLEAN;
+    rptcmd.attrList[0].attrData = (uint8*)&zclSampleLight_OnOff;
+
+    // Set destination address to indirect
+    zclSampleLight_DstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+    zclSampleLight_DstAddr.addr.shortAddr = 0;
+    zcl_SendReportCmd(SAMPLELIGHT_ENDPOINT,&zclSampleLight_DstAddr, ZCL_CLUSTER_ID_GEN_ON_OFF, &rptcmd, ZCL_FRAME_SERVER_CLIENT_DIR, false, 0 );
+    //end update
+  }
 }
 
 /*********************************************************************
