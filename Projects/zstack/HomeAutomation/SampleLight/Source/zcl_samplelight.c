@@ -654,6 +654,7 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
   
   if ( keys & HAL_KEY_SW_6 )
   {
+    //-------------ADD CONTROL LED------------------------------------------
     // toggle local light immediately
     zclSampleLight_OnOff = zclSampleLight_OnOff ? LIGHT_OFF : LIGHT_ON;
     if(zclSampleLight_OnOff==LIGHT_ON)
@@ -676,6 +677,7 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
     zclSampleLight_DstAddr.addr.shortAddr = 0;
     zcl_SendReportCmd(SAMPLELIGHT_ENDPOINT,&zclSampleLight_DstAddr, ZCL_CLUSTER_ID_GEN_ON_OFF, &rptcmd, ZCL_FRAME_SERVER_CLIENT_DIR, false, 0 );
     //end update
+    
   }
 }
 
@@ -963,12 +965,14 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
   {
     zclSampleLight_OnOff = LIGHT_ON;
     HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+    //HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //if you want to turn on the relay 
   }
   // Turn off the light
   else if ( cmd == COMMAND_OFF )
   {
     zclSampleLight_OnOff = LIGHT_OFF;
     HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //turn off led1
+    //HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn off relay
   }
   // Toggle the light
   else if ( cmd == COMMAND_TOGGLE )

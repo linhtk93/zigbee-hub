@@ -14,3 +14,6 @@
 *.wsdt
 *.wspos
 Projects/zstack/HomeAutomation/SampleSwitch/CC2530DB/Backup (2) of SampleSwitch.ewd
+*.ewd
+*.bat
+*.xcl
