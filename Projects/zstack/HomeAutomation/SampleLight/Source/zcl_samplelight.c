@@ -695,6 +695,11 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
     zcl_SendReportCmd(SAMPLELIGHT_ENDPOINT,&zclSampleLight_DstAddr, ZCL_CLUSTER_ID_GEN_ON_OFF, &rptcmd, ZCL_FRAME_SERVER_CLIENT_DIR, false, 0 );
     //end update
     
+    //update light state into NV memory
+    if (osal_nv_item_len(ZCD_NV_LIGHT_STATE))
+    {
+      osal_nv_write(ZCD_NV_LIGHT_STATE, 0, 1, &zclSampleLight_OnOff);
+    }
   }
 }
 
@@ -1004,6 +1009,12 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
     }
   }
 
+  //update light state into NV memory
+    if (osal_nv_item_len(ZCD_NV_LIGHT_STATE))
+    {
+      osal_nv_write(ZCD_NV_LIGHT_STATE, 0, 1, &zclSampleLight_OnOff);
+    }
+  
 #if ZCL_LEVEL_CTRL
   zclSampleLight_DefaultMove( );
 #endif
