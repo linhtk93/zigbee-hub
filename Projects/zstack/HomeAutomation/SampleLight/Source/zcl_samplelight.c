@@ -389,6 +389,23 @@ void zclSampleLight_Init( byte task_id )
 #ifdef ZGP_AUTO_TT
   zgpTranslationTable_RegisterEP ( &zclSampleLight_SimpleDesc );
 #endif
+  
+  //return light state in memory when start 
+  if (osal_nv_item_init(ZCD_NV_LIGHT_STATE, 1, NULL) == SUCCESS)
+  {
+     /* Already have LightState in NV, load it */
+     if(osal_nv_read(ZCD_NV_LIGHT_STATE, 0, 1, &zclSampleLight_OnOff) == SUCCESS)
+     {
+        if(zclSampleLight_OnOff==LIGHT_ON)
+        {
+          HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+        }
+        else 
+        {
+          HalLedSet(HAL_LED_1, HAL_LED_MODE_ON );  //turn off led1
+        }
+     }
+  }
 }
 
 /*********************************************************************
