@@ -17,3 +17,6 @@ Projects/zstack/HomeAutomation/SampleSwitch/CC2530DB/Backup (2) of SampleSwitch.
 *.ewd
 *.bat
 *.xcl
+*.ewt
+*.d51
+*.eww
