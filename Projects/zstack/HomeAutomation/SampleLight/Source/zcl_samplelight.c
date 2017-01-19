@@ -658,11 +658,13 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
     zclSampleLight_OnOff = zclSampleLight_OnOff ? LIGHT_OFF : LIGHT_ON;
     if(zclSampleLight_OnOff==LIGHT_ON)
     {
-      HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+      //HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+      HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //relay on
     }
     else 
     {
-      HalLedSet(HAL_LED_1, HAL_LED_MODE_ON );  //turn off led1
+      //HalLedSet(HAL_LED_1, HAL_LED_MODE_ON );  //turn off led1
+      HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //relay off
     }
     
     zclReportCmd_t rptcmd; 
@@ -737,15 +739,15 @@ void zclSampleLight_UpdateLampLevel( uint8 level )
  */
 static void zclSampleLight_DisplayLight( void )
 {
-  // set the LED1 based on light (on or off)
-  if ( zclSampleLight_OnOff == LIGHT_ON )
-  {
-    HalLedSet ( HAL_LED_1, HAL_LED_MODE_ON );
-  }
-  else
-  {
-    HalLedSet ( HAL_LED_1, HAL_LED_MODE_OFF );
-  }
+//  // set the LED1 based on light (on or off)
+//  if ( zclSampleLight_OnOff == LIGHT_ON )
+//  {
+//    HalLedSet ( HAL_LED_1, HAL_LED_MODE_ON );
+//  }
+//  else
+//  {
+//    HalLedSet ( HAL_LED_1, HAL_LED_MODE_OFF );
+//  }
 
 #ifdef LCD_SUPPORTED
   if (giLightScreenMode == LIGHT_MAINMODE)
@@ -962,13 +964,15 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
   if ( cmd == COMMAND_ON )
   {
     zclSampleLight_OnOff = LIGHT_ON;
-    HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+    //HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+    HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //turn on relay
   }
   // Turn off the light
   else if ( cmd == COMMAND_OFF )
   {
     zclSampleLight_OnOff = LIGHT_OFF;
-    HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //turn off led1
+    //HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //turn off led1
+    HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn off relay
   }
   // Toggle the light
   else if ( cmd == COMMAND_TOGGLE )

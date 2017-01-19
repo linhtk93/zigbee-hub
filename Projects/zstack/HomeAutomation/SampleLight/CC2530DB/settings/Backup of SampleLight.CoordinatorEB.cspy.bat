@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleSwitch\CC2530DB\settings\SampleSwitch.RouterEB.general.xcl" --backend -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleSwitch\CC2530DB\settings\SampleSwitch.RouterEB.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\Backup of SampleLight.CoordinatorEB.general.xcl" --backend -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\Backup of SampleLight.CoordinatorEB.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleSwitch\CC2530DB\settings\SampleSwitch.RouterEB.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleSwitch\CC2530DB\settings\SampleSwitch.RouterEB.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\common\bin\cspybat" -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\Backup of SampleLight.CoordinatorEB.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\PC\Desktop\zigbee and smartThings\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\Backup of SampleLight.CoordinatorEB.driver.xcl" 
 
 @echo off 
 :end

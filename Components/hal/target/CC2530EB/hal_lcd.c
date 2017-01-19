@@ -502,9 +502,9 @@ void HalLcdDisplayPercentBar( char *title, uint8 value )
 static void halLcd_ConfigIO(void)
 {
   /* GPIO configuration */
-  HAL_CONFIG_IO_OUTPUT(HAL_LCD_MODE_PORT,  HAL_LCD_MODE_PIN,  1);
-  HAL_CONFIG_IO_OUTPUT(HAL_LCD_RESET_PORT, HAL_LCD_RESET_PIN, 1);
-  HAL_CONFIG_IO_OUTPUT(HAL_LCD_CS_PORT,    HAL_LCD_CS_PIN,    1);
+  //HAL_CONFIG_IO_OUTPUT(HAL_LCD_MODE_PORT,  HAL_LCD_MODE_PIN,  1);
+  //HAL_CONFIG_IO_OUTPUT(HAL_LCD_RESET_PORT, HAL_LCD_RESET_PIN, 1);
+  //HAL_CONFIG_IO_OUTPUT(HAL_LCD_CS_PORT,    HAL_LCD_CS_PIN,    1);
 }
 
 /**************************************************************************************************
@@ -563,9 +563,9 @@ void HalLcd_HW_Init(void)
   halLcd_ConfigSPI();
 
   /* Perform reset */
-  LCD_ACTIVATE_RESET();
+  //LCD_ACTIVATE_RESET();
   HalLcd_HW_WaitUs(15000); // 15 ms
-  LCD_RELEASE_RESET();
+  //LCD_RELEASE_RESET();
   HalLcd_HW_WaitUs(15); // 15 us
 
   /* Perform the initialization sequence */
@@ -597,11 +597,11 @@ void HalLcd_HW_Init(void)
  **************************************************************************************************/
 void HalLcd_HW_Control(uint8 cmd)
 {
-  LCD_SPI_BEGIN();
-  LCD_DO_CONTROL();
-  LCD_SPI_TX(cmd);
-  LCD_SPI_WAIT_RXRDY();
-  LCD_SPI_END();
+//  LCD_SPI_BEGIN();
+//  LCD_DO_CONTROL();
+//  LCD_SPI_TX(cmd);
+//  LCD_SPI_WAIT_RXRDY();
+//  LCD_SPI_END();
 }
 
 /**************************************************************************************************
@@ -615,11 +615,11 @@ void HalLcd_HW_Control(uint8 cmd)
  **************************************************************************************************/
 void HalLcd_HW_Write(uint8 data)
 {
-  LCD_SPI_BEGIN();
-  LCD_DO_WRITE();
-  LCD_SPI_TX(data);
-  LCD_SPI_WAIT_RXRDY();
-  LCD_SPI_END();
+//  LCD_SPI_BEGIN();
+//  LCD_DO_WRITE();
+//  LCD_SPI_TX(data);
+//  LCD_SPI_WAIT_RXRDY();
+//  LCD_SPI_END();
 }
 
 /**************************************************************************************************
