@@ -389,6 +389,25 @@ void zclSampleLight_Init( byte task_id )
 #ifdef ZGP_AUTO_TT
   zgpTranslationTable_RegisterEP ( &zclSampleLight_SimpleDesc );
 #endif
+  
+    
+  //return light state in memory when start 
+  if (osal_nv_item_init(ZCD_NV_LIGHT_STATE, 1, NULL) == SUCCESS)
+  {
+     /* Already have LightState in NV, load it */
+     if(osal_nv_read(ZCD_NV_LIGHT_STATE, 0, 1, &zclSampleLight_OnOff) == SUCCESS)
+     {
+        if(zclSampleLight_OnOff==LIGHT_ON)
+        {
+          HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //turn on relay
+        }
+        else 
+        {
+          HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF );  //turn off relay
+        }
+     }
+  }
+
 }
 
 /*********************************************************************
@@ -666,6 +685,13 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
       //HalLedSet(HAL_LED_1, HAL_LED_MODE_ON );  //turn off led1
       HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //relay off
     }
+    
+    //update light state into NV memory
+    if (osal_nv_item_len(ZCD_NV_LIGHT_STATE))
+    {
+      osal_nv_write(ZCD_NV_LIGHT_STATE, 0, 1, &zclSampleLight_OnOff);
+    }
+
     
     zclReportCmd_t rptcmd; 
     rptcmd.numAttr = 1;
@@ -986,7 +1012,13 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
       zclSampleLight_OnOff = LIGHT_OFF;
     }
   }
-
+  
+  //update light state into NV memory
+  if (osal_nv_item_len(ZCD_NV_LIGHT_STATE))
+  {
+    osal_nv_write(ZCD_NV_LIGHT_STATE, 0, 1, &zclSampleLight_OnOff);
+  }
+  
 #if ZCL_LEVEL_CTRL
   zclSampleLight_DefaultMove( );
 #endif
