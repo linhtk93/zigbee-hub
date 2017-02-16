@@ -307,7 +307,7 @@ void ZDApp_Init( uint8 task_id )
   (void)NLME_GetExtAddr();  // Load the saveExtAddr pointer.
 
   // Check for manual "Hold Auto Start"
-  ZDAppCheckForHoldKey();
+  //ZDAppCheckForHoldKey();
 
   // Initialize ZDO items and setup the device - type of device to create.
   ZDO_Init();

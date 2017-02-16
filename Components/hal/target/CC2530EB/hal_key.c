@@ -188,8 +188,8 @@ void HalKeyInit( void )
   HAL_KEY_SW_6_SEL &= ~(HAL_KEY_SW_6_BIT);    /* Set pin function to GPIO */
   HAL_KEY_SW_6_DIR &= ~(HAL_KEY_SW_6_BIT);    /* Set pin direction to Input */
 
-//  HAL_KEY_JOY_MOVE_SEL &= ~(HAL_KEY_JOY_MOVE_BIT); /* Set pin function to GPIO */
-//  HAL_KEY_JOY_MOVE_DIR &= ~(HAL_KEY_JOY_MOVE_BIT); /* Set pin direction to Input */
+  HAL_KEY_JOY_MOVE_SEL &= ~(HAL_KEY_JOY_MOVE_BIT); /* Set pin function to GPIO */
+  HAL_KEY_JOY_MOVE_DIR &= ~(HAL_KEY_JOY_MOVE_BIT); /* Set pin direction to Input */
 
 
   /* Initialize callback function */
@@ -240,25 +240,25 @@ void HalKeyConfig (bool interruptEnable, halKeyCBack_t cback)
     HAL_KEY_SW_6_PXIFG = ~(HAL_KEY_SW_6_BIT);
 
 
-//  
-//    /* Rising/Falling edge configuratinn */
-//
-//    HAL_KEY_JOY_MOVE_ICTL &= ~(HAL_KEY_JOY_MOVE_EDGEBIT);    /* Clear the edge bit */
-//    /* For falling edge, the bit must be set. */
-//  #if (HAL_KEY_JOY_MOVE_EDGE == HAL_KEY_FALLING_EDGE)
-//    HAL_KEY_JOY_MOVE_ICTL |= HAL_KEY_JOY_MOVE_EDGEBIT;
-//  #endif
-//
-//
-//    /* Interrupt configuration:
-//     * - Enable interrupt generation at the port
-//     * - Enable CPU interrupt
-//     * - Clear any pending interrupt
-//     */
-//    HAL_KEY_JOY_MOVE_ICTL |= HAL_KEY_JOY_MOVE_ICTLBIT;
-//    HAL_KEY_JOY_MOVE_IEN |= HAL_KEY_JOY_MOVE_IENBIT;
-//    HAL_KEY_JOY_MOVE_PXIFG = ~(HAL_KEY_JOY_MOVE_BIT);
-//
+  
+    /* Rising/Falling edge configuratinn */
+
+    HAL_KEY_JOY_MOVE_ICTL &= ~(HAL_KEY_JOY_MOVE_EDGEBIT);    /* Clear the edge bit */
+    /* For falling edge, the bit must be set. */
+  #if (HAL_KEY_JOY_MOVE_EDGE == HAL_KEY_FALLING_EDGE)
+    HAL_KEY_JOY_MOVE_ICTL |= HAL_KEY_JOY_MOVE_EDGEBIT;
+  #endif
+
+
+    /* Interrupt configuration:
+     * - Enable interrupt generation at the port
+     * - Enable CPU interrupt
+     * - Clear any pending interrupt
+     */
+    HAL_KEY_JOY_MOVE_ICTL |= HAL_KEY_JOY_MOVE_ICTLBIT;
+    HAL_KEY_JOY_MOVE_IEN |= HAL_KEY_JOY_MOVE_IENBIT;
+    HAL_KEY_JOY_MOVE_PXIFG = ~(HAL_KEY_JOY_MOVE_BIT);
+
 
     /* Do this only after the hal_key is configured - to work with sleep stuff */
     if (HalKeyConfigured == TRUE)
@@ -297,10 +297,10 @@ uint8 HalKeyRead ( void )
     keys |= HAL_KEY_SW_6;
   }
 
-//  if ((HAL_KEY_JOY_MOVE_PORT & HAL_KEY_JOY_MOVE_BIT))  /* Key is active low */
-//  {
-//    keys |= halGetJoyKeyInput();
-//  }
+  if ((HAL_KEY_JOY_MOVE_PORT & HAL_KEY_JOY_MOVE_BIT))  /* Key is active low */
+  {
+    keys |= halGetJoyKeyInput();
+  }
 
   return keys;
 }
@@ -342,12 +342,17 @@ void HalKeyPoll (void)
     /* Key interrupt handled here */
   }
 
-//  if (HAL_PUSH_BUTTON1())
-//  {
-//    keys |= HAL_KEY_SW_6;
-//  }
+  if (!PUSH2_SBIT)
+  {
+    keys |= HAL_KEY_SW_7;
+  }
   
-  keys |= HAL_KEY_SW_6;
+  if (!PUSH1_SBIT)
+  {
+    keys |= HAL_KEY_SW_6;
+  }
+  
+  //keys |= HAL_KEY_SW_6;
   
   /* Invoke Callback if new keys were depressed */
   if (keys && (pHalKeyProcessFunction))
@@ -430,11 +435,11 @@ void halProcessKeyInterrupt (void)
     valid = TRUE;
   }
 
-//  if (HAL_KEY_JOY_MOVE_PXIFG & HAL_KEY_JOY_MOVE_BIT)  /* Interrupt Flag has been set */
-//  {
-//    HAL_KEY_JOY_MOVE_PXIFG = ~(HAL_KEY_JOY_MOVE_BIT); /* Clear Interrupt Flag */
-//    valid = TRUE;
-//  }
+  if (HAL_KEY_JOY_MOVE_PXIFG & HAL_KEY_JOY_MOVE_BIT)  /* Interrupt Flag has been set */
+  {
+    HAL_KEY_JOY_MOVE_PXIFG = ~(HAL_KEY_JOY_MOVE_BIT); /* Clear Interrupt Flag */
+    valid = TRUE;
+  }
 
   if (valid)
   {
