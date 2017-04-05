@@ -319,12 +319,12 @@ extern void MAC_RfFrontendSetup(void);
   /* set direction for GPIO outputs  */                          \
   /* For SE2431L PA LNA this sets ANT_SEL to output */           \
   /* For CC2592 this enables LNA */                              \
-  P1DIR |= BV(0);                                                \
-                                                                 \
-  LED3_DDR |= LED3_BV;                                           \
+  P1DIR |= BV(2);                                                \
+  P1DIR |= BV(3);                                                \
+  LED1_DDR |= LED1_BV;                                           \
                                                                  \
   /* Set PA/LNA HGM control P0_7 */                              \
-  P0DIR |= BV(7);                                                \
+  P0DIR |= BV(0);                                                \
                                                                  \
   /* configure tristates */                                      \
   P0INP |= PUSH2_BV;                                             \
@@ -371,25 +371,25 @@ extern void MAC_RfFrontendSetup(void);
   #define HAL_STATE_LED4()          HAL_STATE_LED2()
       
 #elif defined (HAL_PA_LNA_SE2431L) || defined (HAL_PA_LNA_CC2592)
-  #define HAL_TURN_OFF_LED3()       st( LED3_SBIT = LED3_POLARITY (0); )
-  #define HAL_TURN_OFF_LED1()       HAL_TURN_OFF_LED3()
-  #define HAL_TURN_OFF_LED2()       HAL_TURN_OFF_LED3()
-  #define HAL_TURN_OFF_LED4()       HAL_TURN_OFF_LED3()
+  #define HAL_TURN_OFF_LED1()       st( LED1_SBIT = LED1_POLARITY (0); )
+  #define HAL_TURN_OFF_LED3()       HAL_TURN_OFF_LED1()
+  #define HAL_TURN_OFF_LED2()       HAL_TURN_OFF_LED1()
+  #define HAL_TURN_OFF_LED4()       HAL_TURN_OFF_LED1()
 
-  #define HAL_TURN_ON_LED3()        st( LED3_SBIT = LED3_POLARITY (1); )
-  #define HAL_TURN_ON_LED1()        HAL_TURN_ON_LED3()
-  #define HAL_TURN_ON_LED2()        HAL_TURN_ON_LED3()
-  #define HAL_TURN_ON_LED4()        HAL_TURN_ON_LED3()
+  #define HAL_TURN_ON_LED1()        st( LED1_SBIT = LED1_POLARITY (1); )
+  #define HAL_TURN_ON_LED3()        HAL_TURN_ON_LED1()
+  #define HAL_TURN_ON_LED2()        HAL_TURN_ON_LED1()
+  #define HAL_TURN_ON_LED4()        HAL_TURN_ON_LED1()
 
-  #define HAL_TOGGLE_LED3()         st( if (LED3_SBIT) { LED3_SBIT = 0; } else { LED3_SBIT = 1;} )
-  #define HAL_TOGGLE_LED1()         HAL_TOGGLE_LED3()
-  #define HAL_TOGGLE_LED2()         HAL_TOGGLE_LED3()
-  #define HAL_TOGGLE_LED4()         HAL_TOGGLE_LED3()
+  #define HAL_TOGGLE_LED1()         st( if (LED1_SBIT) { LED1_SBIT = 0; } else { LED1_SBIT = 1;} )
+  #define HAL_TOGGLE_LED3()         HAL_TOGGLE_LED1()
+  #define HAL_TOGGLE_LED2()         HAL_TOGGLE_LED1()
+  #define HAL_TOGGLE_LED4()         HAL_TOGGLE_LED1()
 
-  #define HAL_STATE_LED3()          (LED3_POLARITY (LED3_SBIT))
-  #define HAL_STATE_LED1()          HAL_STATE_LED3()     
-  #define HAL_STATE_LED2()          HAL_STATE_LED3()
-  #define HAL_STATE_LED4()          HAL_STATE_LED3()
+  #define HAL_STATE_LED1()          (LED1_POLARITY (LED1_SBIT))
+  #define HAL_STATE_LED3()          HAL_STATE_LED1()     
+  #define HAL_STATE_LED2()          HAL_STATE_LED1()
+  #define HAL_STATE_LED4()          HAL_STATE_LED1()
 
 #elif defined (HAL_BOARD_CC2530EB_REV13) || defined (HAL_PA_LNA) || \
       defined (HAL_PA_LNA_CC2590)

@@ -558,11 +558,11 @@ MAC_INTERNAL_API void macRadioTurnOnPower(void)
     {
       /* P1_1 -> PAEN */
       RFC_OBS_CTRL0 = RFC_OBS_CTRL_PA_PD_INV;
-      OBSSEL1       = OBSSEL_OBS_CTRL0;
+      OBSSEL3       = OBSSEL_OBS_CTRL0;
       
       /* P1_0 -> EN (LNA control) */
       RFC_OBS_CTRL1 = RFC_OBS_CTRL_LNAMIX_PD_INV;
-      OBSSEL0       = OBSSEL_OBS_CTRL1;
+      OBSSEL2       = OBSSEL_OBS_CTRL1;
     }  
     else 
     {   

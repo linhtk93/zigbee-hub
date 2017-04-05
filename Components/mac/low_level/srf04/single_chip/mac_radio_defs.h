@@ -447,8 +447,8 @@
 
 /* ----------- PA/LNA control ---------- */
 /* For Skyworks parts only CPS maps closely to the HGM line */
-#define HAL_PA_LNA_RX_HGM()                           st( P0_7 = 1; )
-#define HAL_PA_LNA_RX_LGM()                           st( P0_7 = 0; )
+#define HAL_PA_LNA_RX_HGM()                           st( P0_0 = 1; )
+#define HAL_PA_LNA_RX_LGM()                           st( P0_0 = 0; )
 
 
 /* ----------- PA/LNA SKE2431L control ---------- */
