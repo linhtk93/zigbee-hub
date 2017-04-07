@@ -718,6 +718,26 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
       leave_req.rejoin         = FALSE;
       leave_req.silent         = TRUE;
       leave_state=NLME_LeaveReq(&leave_req);
+     
+    /*if it leave network then toggle the LED indicator to notice */
+    // toggle local light immediately
+    zclSampleLight_OnOff = zclSampleLight_OnOff ? LIGHT_OFF : LIGHT_ON;
+    if(zclSampleLight_OnOff==LIGHT_ON)
+    {
+      //HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //turn on led1- muc tich cuc am
+      HalLedSet(HAL_LED_1, HAL_LED_MODE_ON ); //relay on
+    }
+    else 
+    {
+      //HalLedSet(HAL_LED_1, HAL_LED_MODE_ON );  //turn off led1
+      HalLedSet(HAL_LED_1, HAL_LED_MODE_OFF ); //relay off
+    }
+    
+    //update light state into NV memory
+    if (osal_nv_item_len(ZCD_NV_LIGHT_STATE))
+    {
+      osal_nv_write(ZCD_NV_LIGHT_STATE, 0, 1, &zclSampleLight_OnOff);
+    }  
   }
 }
 
